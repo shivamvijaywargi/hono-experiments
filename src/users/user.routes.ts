@@ -5,9 +5,9 @@ import { registerSchema } from "./user.validation";
 const userRoutes = new Hono();
 
 userRoutes.post("/register", zValidator("json", registerSchema), (c) => {
-  const { name, email, password, rememberMe } = c.req.valid("json");
+  const body = c.req.valid("json");
 
-  console.log(typeof rememberMe);
+  console.log(body);
 
   return c.json(
     {
