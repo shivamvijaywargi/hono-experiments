@@ -10,10 +10,10 @@ import { userRoutes } from "./users/user.routes";
 
 const app = new Hono({ strict: false });
 
-app.use(poweredBy());
 app.use(prettyJSON());
-app.use(logger());
 app.use(secureHeaders());
+app.use(poweredBy());
+app.use(logger());
 
 app.get("/health-check", (c) => {
   return c.html(<HealthCheck />);
