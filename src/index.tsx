@@ -4,6 +4,7 @@ import { logger } from "hono/logger";
 import { prettyJSON } from "hono/pretty-json";
 import { secureHeaders } from "hono/secure-headers";
 import { showRoutes } from "hono/dev";
+import { timing } from "hono/timing";
 
 import { HealthCheck } from "./pages/HealthCheck";
 import { userRoutes } from "./users/user.routes";
@@ -14,6 +15,7 @@ app.use(prettyJSON());
 app.use(secureHeaders());
 app.use(poweredBy());
 app.use(logger());
+app.use(timing());
 
 app.get("/health-check", (c) => {
   return c.html(<HealthCheck />);
